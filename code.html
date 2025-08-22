@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Jeu du Nombre Mystère</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+  input { padding: 5px; width: 50px; }
+  button { padding: 5px 10px; }
+  #message { margin-top: 20px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Nombre Mystère</h1>
+<p>Devinez le nombre entre 1 et 100 !</p>
+
+<input type="number" id="guess" min="1" max="100">
+<button onclick="checkGuess()">Deviner</button>
+
+<div id="message"></div>
+
+<script>
+let secretNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+
+function checkGuess() {
+    let guess = Number(document.getElementById('guess').value);
+    attempts++;
+    
+    if(guess === secretNumber) {
+        document.getElementById('message').textContent = `Bravo ! Vous avez trouvé en ${attempts} essais. 🎉`;
+        document.body.style.backgroundColor = "#c8facc";
+    } else if(guess < secretNumber) {
+        document.getElementById('message').textContent = "Trop petit ! Essaie encore.";
+    } else {
+        document.getElementById('message').textContent = "Trop grand ! Essaie encore.";
+    }
+}
+</script>
+
+</body>
+</html>>
